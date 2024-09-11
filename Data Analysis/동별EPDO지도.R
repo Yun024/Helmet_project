@@ -81,7 +81,13 @@ Dong<-read_excel(file.choose())
 boxLocation<-c(127.378953,36.321655)
 
 # register_google()로 구글 맵에서 받은 인증 key를 등록한다.
-register_google(key='AIzaSyALhVtJEUZzICnp4sMWulAJRPyFrraQMqg')
+from dotenv import load_datenv
+import os
+
+load_dotenv()
+openai_api_key = os.getenv('OPENAI_API_KEY')
+
+register_google(key=openai_api_key)
 
 # get_map()을 통해 KrMap에 지도 위치를 boxLocation로 지정하고 타입은 "roadmap", 출처는 "google"이고 지도를 +11만큼 확대하여 보여준다.
 KrMap<-get_map(boxLocation, maptype="roadmap",source="google",zoom=11)
